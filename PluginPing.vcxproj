@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{56A090F5-10DE-4C10-B875-B304399995A0}</ProjectGuid>
+    <RootNamespace>PluginPing</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>PluginPing</TargetName>
+    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>PluginPing</TargetName>
+    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;PLUGINPING_MERGED;_WINDOWS;_USRDLL;UNICODE;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)merge_src;$(ProjectDir)ping_src\include;$(ProjectDir)ping_src\src;$(ProjectDir)network_src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>ws2_32.lib;winhttp.lib;bcrypt.lib;gdi32.lib;user32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;PLUGINPING_MERGED;_WINDOWS;_USRDLL;UNICODE;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)merge_src;$(ProjectDir)ping_src\include;$(ProjectDir)ping_src\src;$(ProjectDir)network_src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>ws2_32.lib;winhttp.lib;bcrypt.lib;gdi32.lib;user32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="merge_src\ChildPluginAccess.h" />
+    <ClInclude Include="merge_src\CompositeStatusItem.h" />
+    <ClInclude Include="merge_src\PluginPingMerge.h" />
+    <ClInclude Include="shared_src\RoutePlan.h" />
+    <ClInclude Include="shared_src\RouteEpoch.h" />
+    <ClInclude Include="shared_src\ConfigFile.h" />
+    <ClInclude Include="shared_src\CompositeSection.h" />
+    <ClInclude Include="shared_src\HostDrawing.h" />
+    <ClInclude Include="ping_src\include\PluginInterface.h" />
+    <ClInclude Include="ping_src\src\Common.h" />
+    <ClInclude Include="ping_src\src\ConfigManager.h" />
+    <ClInclude Include="ping_src\src\PingStatusItem.h" />
+    <ClInclude Include="ping_src\src\PluginPing.h" />
+    <ClInclude Include="ping_src\src\ProxyIpStatePolicy.h" />
+    <ClInclude Include="ping_src\src\PublicIpProvider.h" />
+    <ClInclude Include="ping_src\src\Renderer.h" />
+    <ClInclude Include="ping_src\src\StatusData.h" />
+    <ClInclude Include="ping_src\src\StatusDataStore.h" />
+    <ClInclude Include="ping_src\src\TraceParser.h" />
+    <ClInclude Include="network_src\src\Common.h" />
+    <ClInclude Include="network_src\src\ChannelStatePolicy.h" />
+    <ClInclude Include="network_src\src\ConfigManager.h" />
+    <ClInclude Include="network_src\src\MetricsData.h" />
+    <ClInclude Include="network_src\src\MetricsStore.h" />
+    <ClInclude Include="network_src\src\NetworkStatusItem.h" />
+    <ClInclude Include="network_src\src\PluginNetwork.h" />
+    <ClInclude Include="network_src\src\ProbeCommon.h" />
+    <ClInclude Include="network_src\src\ProxyResolver.h" />
+    <ClInclude Include="network_src\src\Renderer.h" />
+    <ClInclude Include="network_src\src\SlidingWindow.h" />
+    <ClInclude Include="network_src\src\StunProbe.h" />
+    <ClInclude Include="network_src\src\TcpProbe.h" />
+    <ClInclude Include="network_src\src\Theme.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="merge_src\CompositeStatusItem.cpp">
+      <ObjectFileName>$(IntDir)merge_CompositeStatusItem.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="merge_src\PluginPingMerge.cpp">
+      <ObjectFileName>$(IntDir)merge_PluginPingMerge.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="shared_src\RoutePlan.cpp">
+      <ObjectFileName>$(IntDir)shared_RoutePlan.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="shared_src\ConfigFile.cpp">
+      <ObjectFileName>$(IntDir)shared_ConfigFile.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="shared_src\RouteEpoch.cpp">
+      <ObjectFileName>$(IntDir)shared_RouteEpoch.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ping_src\src\ConfigManager.cpp">
+      <ObjectFileName>$(IntDir)ping_ConfigManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ping_src\src\PingStatusItem.cpp">
+      <ObjectFileName>$(IntDir)ping_PingStatusItem.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ping_src\src\PluginPing.cpp">
+      <ObjectFileName>$(IntDir)ping_PluginPing.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ping_src\src\PublicIpProvider.cpp">
+      <ObjectFileName>$(IntDir)ping_PublicIpProvider.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ping_src\src\Renderer.cpp">
+      <ObjectFileName>$(IntDir)ping_Renderer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ping_src\src\TraceParser.cpp">
+      <ObjectFileName>$(IntDir)ping_TraceParser.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\ConfigManager.cpp">
+      <ObjectFileName>$(IntDir)network_ConfigManager.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\NetworkStatusItem.cpp">
+      <ObjectFileName>$(IntDir)network_NetworkStatusItem.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\PluginNetwork.cpp">
+      <ObjectFileName>$(IntDir)network_PluginNetwork.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\ProbeCommon.cpp">
+      <ObjectFileName>$(IntDir)network_ProbeCommon.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\ProxyResolver.cpp">
+      <ObjectFileName>$(IntDir)network_ProxyResolver.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\Renderer.cpp">
+      <ObjectFileName>$(IntDir)network_Renderer.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\StunProbe.cpp">
+      <ObjectFileName>$(IntDir)network_StunProbe.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="network_src\src\TcpProbe.cpp">
+      <ObjectFileName>$(IntDir)network_TcpProbe.obj</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="merge_src\PluginPing.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="PluginPing.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,0 +1,33 @@
+// pluginNetwork version resource. Keep in sync with kPluginVersion in Common.h.
+#include <winres.h>
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,14,0
+ PRODUCTVERSION 1,0,14,0
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS 0x0L
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Displays TCP and UDP path quality metrics in TrafficMonitor."
+            VALUE "CompanyName", "pluginNetwork contributors"
+            VALUE "FileDescription", "pluginNetwork for TrafficMonitor"
+            VALUE "FileVersion", "1.0.14"
+            VALUE "InternalName", "pluginNetwork"
+            VALUE "LegalCopyright", "Copyright (C) 2026 pluginNetwork contributors"
+            VALUE "LegalTrademarks", "TrafficMonitor belongs to its respective owner."
+            VALUE "OriginalFilename", "pluginnetwork.dll"
+            VALUE "ProductName", "pluginNetwork for TrafficMonitor"
+            VALUE "ProductVersion", "1.0.14"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
